@@ -1,32 +1,47 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div id="main">
+    <div id="back-img">
+      <img src="./assets/img/bg/bg.jpg"
+        alt="404"
+        style="width: 100%;filter:blur(80px);" />
     </div>
-    <router-view/>
+    <div id="app">
+      <TopBar></TopBar>
+    </div>
   </div>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import TopBar from "components/common/topbar/TopBar";
+export default {
+  name: "App",
+  components: {
+    TopBar
+  }
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+</script>
+<style lang="scss" scoped>
+#main{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  #back-img{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    img{
+        width: 100%;
     }
+  }
+  #app{
+    width: 1400px;
+    margin: 0 auto;
+    margin-top: 50px;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
   }
 }
 </style>
