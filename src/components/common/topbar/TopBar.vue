@@ -175,7 +175,6 @@ export default {
     },
     async getUserSonglist(userId) {  // 获取用户歌曲列表 保存vuex
       const res = await getUserSonglist(userId)
-      console.log(res.playlist);
       this.$store.commit(USER_SONGLIST, res.playlist)
     }
   },

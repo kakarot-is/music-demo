@@ -7,15 +7,19 @@
     </div>
     <div id="app">
       <TopBar></TopBar>
+      center
+      <BottomBar class="btm-b"></BottomBar>
     </div>
   </div>
 </template>
 <script>
 import TopBar from "components/common/topbar/TopBar";
+import BottomBar from "components/common/bottombar/BottomBar";
 export default {
   name: "App",
   components: {
-    TopBar
+    TopBar,
+    BottomBar
   }
 }
 </script>
@@ -42,6 +46,9 @@ export default {
     overflow: hidden;
     position: relative;
     background: #fff;
+      .btm-b {
+        position: relative;
+      }
   }
 }
 </style>
