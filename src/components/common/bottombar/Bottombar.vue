@@ -2,27 +2,27 @@
   <div id="btmbar">
     <div>
       <div class="scroll">
-        <el-slider
-          v-model="musicDuration"
+        <el-slider v-model="musicDuration"
           :max="totalDuration"
           @change="musicDurationChange"
           :show-tooltip="false"
-          :disabled="isUrl"
-        ></el-slider>
+          :disabled="isUrl"></el-slider>
       </div>
       <div class="content">
         <div class="left">
           <div class="singimg">
-            <a href="javascript:void(0)" @click.stop="togSingel">
+            <a href="javascript:void(0)"
+              @click.stop="togSingel">
               <div class="s-img">
-                <img :src="getNowMusicMenu.al.picUrl " alt />
+                <img :src="getNowMusicMenu.al.picUrl "
+                  alt />
                 <div class="m-img">
-                  <a href="javascript:void(0)" @click.stop="togSingel">
-                    <i class="el-icon-arrow-up" style="color:rgba(255,255,255,0.8)"></i>
-                    <i
-                      class="el-icon-arrow-up"
-                      style="color:rgba(255,255,255,0.8);position: absolute;top:12px;left:13px"
-                    ></i>
+                  <a href="javascript:void(0)"
+                    @click.stop="togSingel">
+                    <i class="el-icon-arrow-up"
+                      style="color:rgba(255,255,255,0.8)"></i>
+                    <i class="el-icon-arrow-up"
+                      style="color:rgba(255,255,255,0.8);position: absolute;top:12px;left:13px"></i>
                   </a>
                 </div>
               </div>
@@ -30,9 +30,8 @@
           </div>
           <div class="sing">
             <div>
-              <a
-                href
-              >{{getNowMusicMenu.ar[0].name}} - {{getNowMusicMenu.name || getNowMusicMenu.al.name}}</a>
+              <a href>{{getNowMusicMenu.ar[0].name}} -
+                {{getNowMusicMenu.name || getNowMusicMenu.al.name}}</a>
             </div>
             <div class="sing-time">
               <span>{{musicDuration | showTime}}</span>/
@@ -41,8 +40,10 @@
           </div>
           <div class="icon">
             <span style="cursor: pointer;">
-              <i class="el-icon-star-off" v-show="true"></i>
-              <i class="el-icon-star-on" v-show="false"></i>
+              <i class="el-icon-star-off"
+                v-show="true"></i>
+              <i class="el-icon-star-on"
+                v-show="false"></i>
             </span>
           </div>
           <div class="icon">
@@ -62,37 +63,49 @@
           </div>
         </div>
         <div class="play">
-          <div class="pre" @click="preMusic">
+          <div class="pre"
+            @click="preMusic">
             <span style="cursor: pointer;">
               <i class="el-icon-caret-left"></i>
             </span>
           </div>
-          <div class="start" @click="playMusic">
+          <div class="start"
+            @click="playMusic">
             <span style="cursor: pointer;">
-              <i class="el-icon-video-pause" v-show="isplay"></i>
-              <i class="el-icon-video-play" v-show="!isplay"></i>
+              <i class="el-icon-video-pause"
+                v-show="isplay"></i>
+              <i class="el-icon-video-play"
+                v-show="!isplay"></i>
             </span>
           </div>
-          <div class="next" @click="nextMusic">
+          <div class="next"
+            @click="nextMusic">
             <span style="cursor: pointer;">
               <i class="el-icon-caret-right"></i>
             </span>
           </div>
         </div>
         <div class="more">
-          <div style="marginRight:30px" class="loundBox">
+          <div style="marginRight:30px"
+            class="loundBox">
             <a href="#">
               <i class="el-icon-mic"></i>
             </a>
             <div class="lound">
-              <el-slider v-model="value" vertical height="60px" size="mini" @change="volumeChange"></el-slider>
+              <el-slider v-model="value"
+                vertical
+                height="60px"
+                size="mini"
+                @change="volumeChange"></el-slider>
             </div>
           </div>
-          <el-button type="primary" class="more-btn">
+          <el-button type="primary"
+            class="more-btn">
             倍速
             <i class="el-icon-arrow-up el-icon--right"></i>
           </el-button>
-          <el-button type="primary" class="more-btn">
+          <el-button type="primary"
+            class="more-btn">
             标准
             <i class="el-icon-arrow-up el-icon--right"></i>
           </el-button>
@@ -112,30 +125,38 @@
             </a>
           </div>
           <div>
-            <span @click="showRightList" style="cursor: pointer;">
+            <span @click="showRightList"
+              style="cursor: pointer;">
               <i class="el-icon-s-unfold"></i>
             </span>
           </div>
         </div>
-        <audio :src="getNowMusic" autoplay class="playMusicAudio" ref="audio"></audio>
+        <audio :src="getNowMusic"
+          autoplay
+          class="playMusicAudio"
+          ref="audio"></audio>
       </div>
     </div>
-    <el-dialog
-            :modal="false"
-            :show-close="false"
-            title="播放列表"
-            :visible.sync="showRightDialog"
-            width="23%"
-            center
-          >
-          <LiterTable size='mini' :indexShow='false' :doShow='false' :anchorShow='false' :wth1='165' :wth2='130' :wth3='80'> </LiterTable>
+    <el-dialog :modal="false"
+      :show-close="false"
+      title="播放列表"
+      :visible.sync="showRightDialog"
+      width="23%"
+      center>
+      <LiterTable size='mini'
+        :indexShow='false'
+        :doShow='false'
+        :anchorShow='false'
+        :wth1='165'
+        :wth2='130'
+        :wth3='80'> </LiterTable>
     </el-dialog>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import  LiterTable from 'components/common/songlist/LiterTable'
+import LiterTable from 'components/common/songlist/LiterTable'
 import { timeFormat, songTimeFormat } from "common/uctil";
 import {
   NOW_MUSICMENU,
@@ -149,7 +170,7 @@ import {
 import { getMusicUrl, getMusicMenu } from "network/home";
 export default {
   name: "BottomBar",
-  components:{
+  components: {
     LiterTable,
   },
   computed: {

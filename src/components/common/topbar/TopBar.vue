@@ -3,33 +3,44 @@
     <div class="left">
       <slot name="left">
         <a href="#">
-          <img :src="userImg" alt="404" />
+          <img :src="userImg"
+            alt="404" />
         </a>
-        <span style="fontSize:13px;" v-if="currentUserInfo">{{currentUserInfo.nickname}}</span>
-        <el-button type="text" @click="dialogFormVisible = true" style="color:#fff" v-else>登录</el-button>
-        <el-button
-          @click="logout"
+        <span style="fontSize:13px;"
+          v-if="currentUserInfo">{{currentUserInfo.nickname}}</span>
+        <el-button type="text"
+          @click="dialogFormVisible = true"
+          style="color:#fff"
+          v-else>登录</el-button>
+        <el-button @click="logout"
           v-if="currentUserInfo !== null"
           size="mini"
-          style="margin-top: 10px;margin-left: 15px;"
-        >退出</el-button>
-        <el-dialog title="请登录~~~" :visible.sync="dialogFormVisible" width="18%">
-          <img
-            src="~assets/img/login/phone.png"
+          style="margin-top: 10px;margin-left: 15px;">退出</el-button>
+        <el-dialog title="请登录~~~"
+          :visible.sync="dialogFormVisible"
+          width="18%">
+          <img src="~assets/img/login/phone.png"
             style="display: block;margin: 10px auto;width:18%"
-            alt
-          />
-          <el-form :model="form" :rules="loginInfoRules">
-            <el-form-item label="手机号" :label-width="formLabelWidth">
-              <el-input v-model="form.phone" autocomplete="off"></el-input>
+            alt />
+          <el-form :model="form"
+            :rules="loginInfoRules">
+            <el-form-item label="手机号"
+              :label-width="formLabelWidth">
+              <el-input v-model="form.phone"
+                autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="密码" :label-width="formLabelWidth">
-              <el-input v-model="form.password" autocomplete="off" type="password"></el-input>
+            <el-form-item label="密码"
+              :label-width="formLabelWidth">
+              <el-input v-model="form.password"
+                autocomplete="off"
+                type="password"></el-input>
             </el-form-item>
           </el-form>
-          <div slot="footer" class="dialog-footer">
+          <div slot="footer"
+            class="dialog-footer">
             <el-button @click="cancelLogin">取 消</el-button>
-            <el-button type="primary" @click="confirmLogin">确 定</el-button>
+            <el-button type="primary"
+              @click="confirmLogin">确 定</el-button>
           </div>
         </el-dialog>
       </slot>
@@ -37,7 +48,8 @@
     <div class="center">
       <slot name="center">
         <div>
-          <a href='javascript:void(0)' @click.stop="togBack">
+          <a href='javascript:void(0)'
+            @click.stop="togBack">
             <i class="el-icon-arrow-left"></i>
           </a>
         </div>
@@ -47,15 +59,13 @@
           </a>
         </div>
         <div class="inputSq">
-          <el-input
-            size="mini"
+          <el-input size="mini"
             class="inputt"
             placeholder="请输入内容"
             v-model="input"
             clearable
             suffix-icon="el-icon-search"
-             @keyup.enter.native="togSearch"
-          ></el-input>
+            @keyup.enter.native="togSearch"></el-input>
         </div>
         <div>
           <a href>
@@ -99,7 +109,7 @@ import {
   getPhoneLoginOut,
   getUserSonglist,
 } from "network/login";
-import {USER_SONGLIST} from '@/store/mutationType'
+import { USER_SONGLIST } from '@/store/mutationType'
 export default {
   name: "TopBar",
   data() {
@@ -117,30 +127,30 @@ export default {
         password: [{ required: true, message: " ", trigger: "blur" }],
       },// 登录格式的校验
       form: {
-        phone: "13479636407",
-        password: "kzj2372966718",
+        phone: "18279636216",
+        password: "2468098134.xc",
       },// 默认给个数据，方便测试
       formLabelWidth: "80px", //登录内输入框的宽度
     };
   },
   methods: {
     //返回
-    togBack(){
+    togBack() {
       this.$router.back();
     },
     //搜索框有数据则跳转页面
-    togSearch(){
-      if(this.input === ''){
-        this.$toast.show("不能为空哦~",2000);
+    togSearch() {
+      if (this.input === '') {
+        this.$toast.show("不能为空哦~", 2000);
         return;
       };
-       this.$router.push('/search' + this.input)
+      this.$router.push('/search' + this.input)
     },
     //获取用户的歌单 放到vuex上
     getUserSonglist(userId) {
       getUserSonglist(userId).then((res) => {
         // console.log(res.playlist);
-        this.$store.commit(USER_SONGLIST,res.playlist);
+        this.$store.commit(USER_SONGLIST, res.playlist);
       });
     },
     //退出接口登录 告诉接口已退出 并还原数据等操作
@@ -152,7 +162,7 @@ export default {
         //存储用户信息的localstorage设置为null
         window.localStorage.setItem("currentUserInfo", null);
         this.userImg = require("assets/img/common/logo.png");
-        this.$store.commit(USER_SONGLIST,[]);
+        this.$store.commit(USER_SONGLIST, []);
       });
     },
     //退出登录 
