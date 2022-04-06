@@ -1,24 +1,40 @@
 import { request } from './request'
 
-export function getPhoneLogin(phone, password) { // 用户登录
+export function getPhoneLogin(phone,password){
     return request({
-        url: '/login/cellphone',
-        params: {
+        url:'/login/cellphone',
+        params:{
             phone,
             password,
         }
     })
 }
-export function getPhoneLoginOut() { // 用户退出
+
+export function getPhoneLoginOut(){
     return request({
-        url: 'logout',
+        url:'logout',
     })
 }
-
-export function getUserSonglist(uid) { //获取用户歌曲列表
+export function getUserSonglist(uid){
     return request({
-        url: 'user/playlist',
-        params: {
+        url:'user/playlist',
+        params:{
+            uid,
+        }
+    })
+}
+export function getUserAnchor(uid){
+    return request({
+        url:'/user/dj',
+        params:{
+            uid,
+        }
+    })
+}
+export function getUserFollows(uid){
+    return request({
+        url:'/user/follows',
+        params:{
             uid,
         }
     })

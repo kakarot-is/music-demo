@@ -18,11 +18,12 @@ export function request(config) {
         // console.log(config);
         return config;
     }, err => {
-        console.log(err);
+        // console.log(err);
     })
     instance1.interceptors.response.use(res => {
+        // console.log(res.data);
         return res.data;
-    }, err => {
+    },err => {
         console.log(err);
     })
     //axios.create的返回值是一个promise对象！

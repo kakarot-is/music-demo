@@ -6,11 +6,18 @@ import './assets/css/reset.css'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import toast from 'components/common/toast/index'
-Vue.config.productionTip = false
+
 Vue.use(toast);
-Vue.use(ElementUI)
+Vue.config.productionTip = false
+Vue.prototype.$bus = new Vue();
+// import axios from 'axios'
+// Vue.prototype.$axios = axios
+// axios.defaults.baseURL = '/api'  //关键代码
+
+Vue.use(ElementUI);
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+

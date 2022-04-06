@@ -1,30 +1,29 @@
 <template>
-  <div id="toast"
-    v-show="isShow">
-    <span>{{message}}</span>
+  <div id="toast" v-show="isShow">
+      <span>{{message}}</span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Toast',
-  data() {
-    return {
-      message: '当前内容为空!',
-      isShow: false
+    name:'Toast',
+    data(){
+        return{
+            message:'当前内容为空!',
+            isShow:false
+            }
+        },
+    methods:{
+        show(message,time=1000){
+            this.isShow = true;
+            this.message = message;
+            setTimeout(() => {
+                this.isShow = false;
+                this.message = '';
+            },time)
+        }
     }
-  },
-  methods: {
-    show(message, time = 1000) {
-      this.isShow = true;
-      this.message = message;
-      setTimeout(() => {
-        this.isShow = false;
-        this.message = '';
-      }, time)
     }
-  }
-}
 
 </script>
 
