@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0d076e"],{"67a8":function(e,t,n){"use strict";n.r(t);var c=function(){var e=this,t=e.$createElement;e._self._c;return e._m(0)},i=[function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"myseilffm"},[n("h1",{staticStyle:{fontSize:"22px",fontWeight:"bold",textAlign:"center",marginTop:"20px"}},[e._v("私人FM")])])}],s={name:"MyseilfFM"},a=s,l=n("2877"),r=Object(l["a"])(a,c,i,!1,null,"1c8cf486",null);t["default"]=r.exports}}]);
+//# sourceMappingURL=chunk-2d0d076e.d2ecb778.js.map
