@@ -10,7 +10,7 @@ import axios from 'axios'
 export function request(config) {
     const instance1 = axios.create({
         // baseURL: 'https://autumnfish.cn/',
-        baseURL: '',
+        baseURL: '/api',
         timeout: 30000,
     })
     //请求拦截和响应拦截
