@@ -141,5 +141,4 @@ export default {
             meta:{index:2}
         },
     ],
-    mode: 'history',
 }
