@@ -1,36 +1,38 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+# 工作流名称，不设置的话默认取配置文件名
+name: Build and Deploy
+# 指定触发 workflow 的条件
+# 当前是 只有 master分支上触发 push 事件时才执行工作流任务
+on: 
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    branches:
+      - master
+# 工作流执行的一个或多个任务
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  # 任务名称
+  build-and-deploy:
+    # 任务运行的容器类型（虚拟机环境）
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # 任务执行的步骤
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      # 步骤名称
+      - name: Checkout 🛎️
+        # 使用的操作 actions，可以使用公共仓库，本地仓库，别人的仓库的action
+        # 拉取代码
+        uses: actions/checkout@master
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Build and Deploy
+        # 构建发布 Github pages
+        uses: JamesIves/github-pages-deploy-action@releases/v2
+        # 该步骤所需的环境变量
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # 在部署前要checkout的基本分支，默认是master
+          BASE_BRANCH: master # The branch the action should deploy from.
+          # 指定部署的分支，默认是 gh-pages 分支
+          BRANCH: gh-pages # The branch the action should deploy to.
+          # 存储库中要部署的文件夹。
+          # 该步骤会将项目中 FOLDER 指定文件夹下的文件推送到 BRANCH 分支，作为Github Pages 部署的内容。
+          # Vue CLI默认打包到 dist 目录
+          FOLDER: dist # The folder the action should deploy.
+          # 在向 BRANCH 分支推送代码前，可以指定构建脚本
+          BUILD_SCRIPT: npm install && npm run build # The build script the action should run prior to deploying.
